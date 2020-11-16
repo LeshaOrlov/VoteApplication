@@ -1,0 +1,36 @@
+﻿@model VoteApp.ViewModels.CreateVoteViewModel
+@{
+    ViewData["Title"] = "Голосование";
+}
+<h4>Проголосовать</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Ваше имя</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OptionId" class="control-label">Кандидат</label>
+                <select asp-for="OptionId" asp-items="ViewBag.Options" class="form-control" >
+                    <option disabled selected>Выберите кандидата</option>
+                </select>
+                <span asp-validation-for="OptionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Отдать голос" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

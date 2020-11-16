@@ -1,0 +1,15 @@
+﻿@model List<VoteApp.Models.Entities.VoteResult>
+
+@{
+    ViewData["Title"] = "VoteResult";
+}
+
+<h4>Результат голосования</h4>
+<hr />
+
+<div>
+    @foreach (var vote in Model)
+    {
+        <p> @vote.NameOption : @vote.CountVotes</p>
+    }
+</div>
